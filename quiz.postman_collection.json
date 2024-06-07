@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "f098b755-9d07-49bf-a5a2-344c7cdd254e",
+		"name": "quiz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35320122"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/question/add",
+			"protocolProfileBehavior": {
+				"insecureHTTPParser": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"JAVA\",\r\n    \"level\": \"easy\",\r\n    \"question\": \"Why main method is declared as public static void?\",\r\n    \"option1\": \"It initializes the class and creates an instance of the class.\",\r\n    \"option2\": \"It defines the entry point of the program and is called by the Java Virtual Machine (JVM) to start the application.\",\r\n    \"option3\": \"It returns a value to the JVM indicating the successful execution of the program.\",\r\n    \"option4\": \"It is used to print messages to the console during program execution.\",\r\n    \"correctAnswer\": \"It defines the entry point of the program and is called by the Java Virtual Machine (JVM) to start the application.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/question/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"question",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/question/fetchAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/question/fetchAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"question",
+						"fetchAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/question/fetchByCategory?category=java",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/question/fetchByCategory?category=java",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"question",
+						"fetchByCategory"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "java"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/quiz/create?category=JAVA&noOfQuests=2&title=JAVA QUIZ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/quiz/create?category=JAVA&noOfQuests=2&title=JAVA QUIZ",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"quiz",
+						"create"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "JAVA"
+						},
+						{
+							"key": "noOfQuests",
+							"value": "2"
+						},
+						{
+							"key": "title",
+							"value": "JAVA QUIZ"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/question/getScore",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 605,\r\n        \"response\": \"The GIL ensures thread safety by allowing only one thread to execute Python bytecode at a time.\"\r\n    },\r\n    {\r\n        \"id\": 852,\r\n        \"response\": \"To define functions with a variable number of arguments.\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/question/getScore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"question",
+						"getScore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/question/getQuestions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    605,\r\n    852\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/question/getQuestions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"question",
+						"getQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/question/generateQuest?category=PYTHON&noOfQuests=4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/question/generateQuest?category=PYTHON&noOfQuests=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"question",
+						"generateQuest"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "PYTHON"
+						},
+						{
+							"key": "noOfQuests",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8765/quiz-service/quiz/get?id=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8765/quiz-service/quiz/get?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"quiz-service",
+						"quiz",
+						"get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/quiz/submit?id=1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 603,\r\n        \"response\": \"It is used to print messages to the console during program execution.\"\r\n    },\r\n    {\r\n        \"id\": 604,\r\n        \"response\": \"String\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/quiz/submit?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"quiz",
+						"submit"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/quiz/get?id=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/quiz/get?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"quiz",
+						"get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/quiz/get?id=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/quiz/get?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"quiz",
+						"get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
