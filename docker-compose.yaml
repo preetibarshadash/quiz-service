@@ -1,0 +1,73 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-container
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+      - microservice-network
+    restart: always
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      retries: 5
+
+  service-registry:
+    image: microservices/service-registry:0.0.1-SNAPSHOT
+    ports:
+      - "8761:8761"
+    networks:
+      - microservice-network
+    restart: always
+
+  api-gateway:
+    image: microservices/api-gateway:0.0.1-SNAPSHOT
+    ports:
+      - "8765:8765"
+    networks:
+      - microservice-network
+    depends_on:
+      - service-registry
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka
+    restart: always
+
+  question-service:
+    image: microservices/question-service:0.0.1-SNAPSHOT
+    ports:
+      - "8082:8082"
+    networks:
+      - microservice-network
+    depends_on:
+      - service-registry
+      - postgres
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-container:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+    restart: always
+
+  quiz-service:
+    image: microservices/quiz-service:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+    networks:
+      - microservice-network
+    depends_on:
+      - service-registry
+      - postgres
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-container:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+    restart: always
+
+networks:
+  microservice-network:
+    driver: bridge
