@@ -30,6 +30,7 @@ spec:
         - containerPort: 5432
 
 ---
+
 # PostgreSQL Service
 apiVersion: v1
 kind: Service
@@ -47,6 +48,7 @@ spec:
   clusterIP: None # Headless service for internal DNS discovery
 
 ---
+
 # Quiz-Service Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -81,10 +83,13 @@ spec:
           value: postgres
         - name: SPRING_DATASOURCE_PASSWORD
           value: password
+        - name: QUESTION_SERVICE_URI
+          value: http://question-service
         ports:
         - containerPort: 8081
 
 ---
+
 # Quiz-Service Service
 apiVersion: v1
 kind: Service
