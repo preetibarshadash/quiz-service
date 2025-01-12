@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "a592dace-b216-410b-b10e-5ead7903f51e",
+		"name": "kubernetes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35320122"
+	},
+	"item": [
+		{
+			"name": "localhost:8765/quiz-service/quiz/get?id=1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "34.135.19.181:8081/quiz/get?id=1",
+					"host": [
+						"34",
+						"135",
+						"19",
+						"181"
+					],
+					"port": "8081",
+					"path": [
+						"quiz",
+						"get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/quiz/create?category=JAVA&noOfQuests=2&title=JAVA QUIZ",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "34.135.19.181:8081/quiz/create?category=JAVA&noOfQuests=1&title=JAVA QUIZ",
+					"host": [
+						"34",
+						"135",
+						"19",
+						"181"
+					],
+					"port": "8081",
+					"path": [
+						"quiz",
+						"create"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "JAVA"
+						},
+						{
+							"key": "noOfQuests",
+							"value": "1"
+						},
+						{
+							"key": "title",
+							"value": "JAVA QUIZ"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/question/add",
+			"protocolProfileBehavior": {
+				"insecureHTTPParser": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"JAVA\",\r\n    \"level\": \"easy\",\r\n    \"question\": \"Why main method is declared as public static void?\",\r\n    \"option1\": \"It initializes the class and creates an instance of the class.\",\r\n    \"option2\": \"It defines the entry point of the program and is called by the Java Virtual Machine (JVM) to start the application.\",\r\n    \"option3\": \"It returns a value to the JVM indicating the successful execution of the program.\",\r\n    \"option4\": \"It is used to print messages to the console during program execution.\",\r\n    \"correctAnswer\": \"It defines the entry point of the program and is called by the Java Virtual Machine (JVM) to start the application.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.70.69.225:8082/question/add",
+					"protocol": "http",
+					"host": [
+						"34",
+						"70",
+						"69",
+						"225"
+					],
+					"port": "8082",
+					"path": [
+						"question",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
